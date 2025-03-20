@@ -1,6 +1,7 @@
 package com.example.zodiaco
 
 import android.os.Bundle
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -8,6 +9,8 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.zodiaco.data.Horoscopo
 
 class MainActivity : AppCompatActivity() {
+
+    lateinit var recyclerView: TextView
 
     val horoscopoLista = listOf(
         Horoscopo("aries" , R.string.horoscope_date_aries, R.string.horoscope_date_aries, R.drawable.aries_icon),
@@ -34,5 +37,11 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        recyclerView = findViewById(R.id.recyclerView)
+
+        val adapter = horoscopoAdapter(horoscopoLista)
+        recyclerView.adapter = adapter
+
     }
 }
