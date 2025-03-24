@@ -6,11 +6,12 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.zodiaco.data.Horoscopo
+import com.example.zodiaco.data.HoroscopoAdapter
 
 class MainActivity : AppCompatActivity() {
-
-    lateinit var recyclerView: TextView
 
     val horoscopoLista = listOf(
         Horoscopo("aries" , R.string.horoscope_date_aries, R.string.horoscope_date_aries, R.drawable.aries_icon),
@@ -27,6 +28,7 @@ class MainActivity : AppCompatActivity() {
         Horoscopo("pisces", R.string.horoscope_name_pisces, R.string.horoscope_date_pisces, R.drawable.pisces_icon)
     )
 
+    lateinit var recyclerView: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,10 +40,11 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        recyclerView = findViewById(R.id.recyclerView)
+        recyclerView = findViewById(R.id.recylerView)
 
-        val adapter = horoscopoAdapter(horoscopoLista)
+        val adapter = HoroscopoAdapter(horoscopoLista)
         recyclerView.adapter = adapter
+        recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false )
 
     }
 }

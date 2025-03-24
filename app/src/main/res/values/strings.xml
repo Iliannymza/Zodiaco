@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">Zodiaco</string>
-    
-    < <string name="horoscope_name_aries">Aries</string>
+
+
+    <string name="horoscope_name_aries">Aries</string>
     <string name="horoscope_name_taurus">Taurus</string>
     <string name="horoscope_name_gemini">Gemini</string>
     <string name="horoscope_name_cancer">Cancer</string>
@@ -27,8 +28,5 @@
     <string name="horoscope_date_aquarius">January 20 to February 18</string>
     <string name="horoscope_date_pisces">February 19 to March 20</string>
 
-    
-    
-    
-    
+
 </resources>

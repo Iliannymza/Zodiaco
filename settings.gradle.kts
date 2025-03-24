@@ -21,3 +21,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "Zodiaco"
 include(":app")
+include(":app")
+ 
