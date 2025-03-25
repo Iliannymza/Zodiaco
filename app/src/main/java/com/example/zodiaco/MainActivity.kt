@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        recyclerView = findViewById(R.id.recylerView)
+        recyclerView = findViewById(R.id.recyclerView)
 
         val adapter = HoroscopoAdapter(horoscopoLista)
         recyclerView.adapter = adapter
