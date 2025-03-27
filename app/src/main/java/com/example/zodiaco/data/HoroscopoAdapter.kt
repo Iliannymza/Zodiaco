@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.zodiaco.R
 import com.example.zodiaco.data.Horoscopo
 
-class HoroscopoAdapter(val items: List<Horoscopo>) : Adapter<HoroscopoViewHolder>() {
+class HoroscopoAdapter(val items: List<Horoscopo>, val onItemClick: (Int) -> Unit) : Adapter<HoroscopoViewHolder>() {
 
     //Cual es la vista de la celdas
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HoroscopoViewHolder {
@@ -28,6 +28,10 @@ class HoroscopoAdapter(val items: List<Horoscopo>) : Adapter<HoroscopoViewHolder
     override fun onBindViewHolder(holder: HoroscopoViewHolder, position: Int) {
         val horoscopo = items[position]
         holder.render(horoscopo)
+        holder.itemView.setOnClickListener {
+            onItemClick(position)
+
+        }
     }
 }
 
