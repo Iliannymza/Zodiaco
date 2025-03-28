@@ -7,7 +7,7 @@ class HoroscopoProvider {
     companion object {
         private val horoscopoLista = listOf(
             Horoscopo("aries" ,
-                R.string.horoscope_date_aries,
+                R.string.horoscope_name_aries,
                 R.string.horoscope_date_aries,
                 R.drawable.aries_icon
             ),
@@ -78,5 +78,4 @@ class HoroscopoProvider {
             }
         }
     }
-
-    }
+}

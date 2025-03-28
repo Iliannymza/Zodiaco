@@ -4,12 +4,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.RemoteViews.RemoteCollectionItems
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.zodiaco.R
-import com.example.zodiaco.data.Horoscopo
 
 class HoroscopoAdapter(val items: List<Horoscopo>, val onItemClick: (Int) -> Unit) : Adapter<HoroscopoViewHolder>() {
 
@@ -35,7 +33,7 @@ class HoroscopoAdapter(val items: List<Horoscopo>, val onItemClick: (Int) -> Uni
     }
 }
 
-class HoroscopoViewHolder (view: View) : ViewHolder(view) {
+class HoroscopoViewHolder(view: View) : ViewHolder(view) {
 
     val  nameTextView: TextView = view.findViewById(R.id.nameTextView)
     val datesTextView : TextView = view.findViewById(R.id.datesTextView)
