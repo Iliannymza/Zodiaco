@@ -5,6 +5,9 @@ import android.os.Bundle
 import android.view.Menu
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
+import androidx.appcompat.widget.SearchView.OnQueryTextListener
+import androidx.core.view.OnReceiveContentListener
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -19,6 +22,7 @@ class MainActivity : AppCompatActivity() {
     var horoscopoLista = HoroscopoProvider.getAll()
 
     lateinit var recyclerView: RecyclerView
+    lateinit var  adapter: HoroscopoAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,7 +36,7 @@ class MainActivity : AppCompatActivity() {
 
         recyclerView = findViewById(R.id.recyclerView)
 
-        val adapter = HoroscopoAdapter(horoscopoLista, { position ->
+        adapter = HoroscopoAdapter(horoscopoLista, { position ->
             val horoscopo = horoscopoLista[position]
 
             val intent = Intent(this, DetailActivity::class.java)
@@ -43,8 +47,26 @@ class MainActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false )
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.activity_main_menu, menu)
+
+        val menuItem = menu.findItem(R.id.menu_search)
+        val searchView = menuItem.actionView as SearchView
+
+        searchView.setOnQueryTextListener(object : OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String): Boolean {
+                horoscopoLista = HoroscopoProvider.getAll().filter { horoscopo ->
+                    getString(horoscopo.name).contains(newText, true)
+                }
+                adapter.updateItems(horoscopoLista)
+                return true
+            }
+        })
+
         return true
     }
-}
+    }

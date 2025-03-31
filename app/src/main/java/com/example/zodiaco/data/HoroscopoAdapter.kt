@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.zodiaco.R
 
-class HoroscopoAdapter(val items: List<Horoscopo>, val onItemClick: (Int) -> Unit) : Adapter<HoroscopoViewHolder>() {
+class HoroscopoAdapter(var items: List<Horoscopo>, val onItemClick: (Int) -> Unit) : Adapter<HoroscopoViewHolder>() {
 
     //Cual es la vista de la celdas
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HoroscopoViewHolder {
@@ -30,6 +30,11 @@ class HoroscopoAdapter(val items: List<Horoscopo>, val onItemClick: (Int) -> Uni
             onItemClick(position)
 
         }
+    }
+
+    fun  updateItems(items: List<Horoscopo>) {
+        this.items = items
+        notifyDataSetChanged()
     }
 }
 
