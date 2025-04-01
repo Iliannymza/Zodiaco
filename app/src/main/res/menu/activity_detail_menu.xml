@@ -5,7 +5,8 @@
     <item android:id="@+id/menu_favorito"
         android:icon="@drawable/ic_favorito"
         android:title="@string/menu_favorito"
-        app:showAsAction="always" />
+        app:showAsAction="always"
+        app:iconTint="@color/favorito"/>
 
     <item android:id="@+id/menu_share"
         android:icon="@drawable/ic_share"

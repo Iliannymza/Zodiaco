@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -9,7 +10,7 @@
         android:id="@+id/iconImageView"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:src="@drawable/aries_icon"/>
+        android:src="@drawable/aries_icon" />
 
     <LinearLayout
         android:layout_width="0dp"
@@ -25,7 +26,7 @@
             android:layout_height="wrap_content"
             android:text="Aries"
             android:textSize="24sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/datesTextView"
@@ -36,5 +37,12 @@
 
     </LinearLayout>
 
+    <ImageView
+        android:id="@+id/favoritoImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_favorito_selecionado"
+        app:tint="@color/favorito"
+        android:layout_gravity="center_vertical"/>
 
 </LinearLayout>
