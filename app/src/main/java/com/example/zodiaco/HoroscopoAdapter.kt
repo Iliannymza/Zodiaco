@@ -1,4 +1,4 @@
-package com.example.zodiaco.data
+package com.example.zodiaco
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,7 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import com.example.zodiaco.R
+import com.example.zodiaco.data.Horoscopo
 import com.example.zodiaco.utils.sessionManager
 
 class HoroscopoAdapter(var items: List<Horoscopo>, val onItemClick: (Int) -> Unit) : Adapter<HoroscopoViewHolder>() {
