@@ -2,7 +2,7 @@ package com.example.zodiaco.utils
 
 import android.content.Context
 
-class sessionManager(context: Context) {
+class SessionManager(context: Context) {
     private val sharedPref = context.getSharedPreferences("zodiak_session", Context.MODE_PRIVATE)
 
     fun  setFavoritoHoroscopo(id: String) {

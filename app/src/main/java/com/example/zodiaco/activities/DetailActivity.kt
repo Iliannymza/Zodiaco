@@ -15,7 +15,8 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.zodiaco.R
 import com.example.zodiaco.data.Horoscopo
 import com.example.zodiaco.data.HoroscopoProvider
-import com.example.zodiaco.utils.sessionManager
+import com.example.zodiaco.utils.SessionManager
+import com.google.android.material.progressindicator.LinearProgressIndicator
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -51,7 +52,7 @@ class DetailActivity : AppCompatActivity() {
             insets
         }
 
-        session = sessionManager(this)
+        session = SessionManager(this)
 
         nameTextView = findViewById(R.id.nameTextView)
         datesTextView = findViewById(R.id.datesTextView)
@@ -69,7 +70,7 @@ class DetailActivity : AppCompatActivity() {
         datesTextView.setText(horoscopo.dates)
         iconImageView.setImageResource(horoscopo.icon)
 
-        horoscopoLuckTextView()
+        getHoroscopoLuck()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -116,13 +117,17 @@ class DetailActivity : AppCompatActivity() {
         } else {
             favoritoMenuItem.setIcon(R.drawable.ic_favorito)
         }
+
+        fun getHoroscopoLuck() {
+
+        }
     }
 
     fun getHoroscopoLuck() {
         progressBar.visibility = View.VISIBLE
 
         CoroutineScope(Dispatchers.IO).launch {
-            val  url = URL("https://horoscope-app-api.vercel.app/api/v1/get-horoscope/daily?sign=${horoscope.id}")
+            val  url = URL("https://horoscope-app-api.vercel.app/api/v1/get-horoscope/daily?sign=${horoscopo.id}")
 
             // HTTP Connexion
             val urlConnection = url.openConnection() as HttpsURLConnection
@@ -146,7 +151,7 @@ class DetailActivity : AppCompatActivity() {
 
                     CoroutineScope(Dispatchers.Main).launch {
                         progressBar.visibility = View.GONE
-                        horoscopeLuckTextView.text = result
+                        horoscopoLuckTextView.text = result
                     }
                 } else {
                     Log.i("API", "Hubo un error en la llamada al API")
